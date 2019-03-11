@@ -1,0 +1,67 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import os
+
+def memoire_dispo():
+    process = os.popen("cat /proc/meminfo | grep 'MemFree' | awk ' {print $2,$3} '")
+    dispo = process.read()
+    process.close()
+    return dispo
+
+def memoire_total():
+    process = os.popen("cat /proc/meminfo | grep 'MemTotal' | awk ' {print $2,$3} '")
+    total = process.read()
+    process.close()
+    return total
+
+def nom_processeur():
+    process = os.popen("cat /proc/cpuinfo | grep 'model name' | tail -n 1 | cut -d':' -f2")
+    nom_proc = process.read()
+    process.close()
+    return nom_proc
+
+def nom_graphique():
+    process = os.popen("lspci| grep VGA | cut -d':' -f3")
+    nom_graph = process.read()
+    process.close()
+    return nom_graph
+
+def temps_actif():
+    process = os.popen("uptime | awk ' { print $3 }' |cut -d',' -f1")
+    temps = process.read()
+    process.close()
+    return temps
+
+def disk_max():
+    process = os.popen("df -h | grep '^/' | awk ' { print $2 }'")
+    max = process.read()
+    process.close()
+    return max
+
+def disk_dispo():
+    process = os.popen("df -h | grep '^/' | awk ' { print $4 }'")
+    dispo = process.read()
+    process.close()
+    return dispo
+
+def test_ping():
+    process = os.popen("ping 8.8.8.9 -c4")
+    dispo = process.read()
+    process2 = os.popen("echo $?")
+    te = process2.read()
+    process.close()
+    process2.close()
+    return te
+
+print("memoire total dispo",memoire_total())
+print("memoire dispo",memoire_dispo())
+print("processeur utiliser:",nom_processeur())
+print("carte graphique:",nom_graphique())
+print("actif depuis",temps_actif())
+print("disk max",disk_max())
+print("disk dispo:",disk_dispo())
+print("valeur ping:",test_ping())
+
+
+#hwinfo --network --short
