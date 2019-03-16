@@ -2,6 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import os
+import json
+
+#Definition des sondes
+
+def nom_machine():
+    process = os.popen("hostname")
+    nom = process.read()
+    process.close()
+    return nom
 
 def memoire_dispo():
     process = os.popen("cat /proc/meminfo | grep 'MemFree' | awk ' {print $2,$3} '")
@@ -34,19 +43,19 @@ def temps_actif():
     return temps
 
 def disk_max():
-    process = os.popen("df -h | grep '^/' | awk ' { print $2 }'")
+    process = os.popen("df -h | grep -w '/' | awk ' { print $2 }'")
     max = process.read()
     process.close()
     return max
 
 def disk_dispo():
-    process = os.popen("df -h | grep '^/' | awk ' { print $4 }'")
+    process = os.popen("df -h | grep -w '/'| awk ' { print $4 }'")
     dispo = process.read()
     process.close()
     return dispo
 
 def test_ping():
-    process = os.popen("ping 8.8.8.9 -c4")
+    process = os.popen("ping 8.8.8.8 -c4")
     dispo = process.read()
     process2 = os.popen("echo $?")
     te = process2.read()
@@ -54,14 +63,23 @@ def test_ping():
     process2.close()
     return te
 
-print("memoire total dispo",memoire_total())
-print("memoire dispo",memoire_dispo())
-print("processeur utiliser:",nom_processeur())
-print("carte graphique:",nom_graphique())
-print("actif depuis",temps_actif())
-print("disk max",disk_max())
-print("disk dispo:",disk_dispo())
-print("valeur ping:",test_ping())
+
+#Extraction JSON
+
+machine = {
+    "Nom_Machine": nom_machine(),
+    "Memoire_Installer": memoire_total(),
+    "Memoire_Dispo": memoire_dispo(),
+    "Nom_Processeur": nom_processeur(),
+    "Nom_Graphique": nom_graphique(),
+    "Temps_Actif": temps_actif(),
+    "Capaciter_Disque": disk_max(),
+    "Capaciter_Dispo": disk_dispo(),
+}
+machine_dict=json.dumps(machine)
+
+print(machine_dict)
+#print("valeur ping:",test_ping())
 
 
 #hwinfo --network --short
