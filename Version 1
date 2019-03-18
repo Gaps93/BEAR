@@ -3,6 +3,7 @@
 
 import os
 import json
+import requests
 
 #Definition des sondes
 
@@ -76,6 +77,5 @@ machine = {
     "Capaciter_Disque": disk_max(),
     "Capaciter_Dispo": disk_dispo(),
 }
-machine_dict=json.dumps(machine)
 
-print(machine_dict)
+r = requests.post("http://0.0.0.0:8000/", json={'json_payload': machine})
