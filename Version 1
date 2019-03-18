@@ -10,49 +10,49 @@ def nom_machine():
     process = os.popen("hostname")
     nom = process.read()
     process.close()
-    return nom
+    return nom.rstrip()
 
 def memoire_dispo():
     process = os.popen("cat /proc/meminfo | grep 'MemFree' | awk ' {print $2,$3} '")
     dispo = process.read()
     process.close()
-    return dispo
+    return dispo.rstrip()
 
 def memoire_total():
     process = os.popen("cat /proc/meminfo | grep 'MemTotal' | awk ' {print $2,$3} '")
     total = process.read()
     process.close()
-    return total
+    return total.rstrip()
 
 def nom_processeur():
     process = os.popen("cat /proc/cpuinfo | grep 'model name' | tail -n 1 | cut -d':' -f2")
     nom_proc = process.read()
     process.close()
-    return nom_proc
+    return nom_proc.rstrip()
 
 def nom_graphique():
     process = os.popen("lspci| grep VGA | cut -d':' -f3")
     nom_graph = process.read()
     process.close()
-    return nom_graph
+    return nom_graph.rstrip()
 
 def temps_actif():
     process = os.popen("uptime | awk ' { print $3 }' |cut -d',' -f1")
     temps = process.read()
     process.close()
-    return temps
+    return temps.rstrip()
 
 def disk_max():
     process = os.popen("df -h | grep -w '/' | awk ' { print $2 }'")
     max = process.read()
     process.close()
-    return max
+    return max.rstrip()
 
 def disk_dispo():
     process = os.popen("df -h | grep -w '/'| awk ' { print $4 }'")
     dispo = process.read()
     process.close()
-    return dispo
+    return dispo.rstrip()
 
 def test_ping():
     process = os.popen("ping 8.8.8.8 -c4")
@@ -79,7 +79,3 @@ machine = {
 machine_dict=json.dumps(machine)
 
 print(machine_dict)
-#print("valeur ping:",test_ping())
-
-
-#hwinfo --network --short
