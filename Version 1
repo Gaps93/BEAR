@@ -19,6 +19,13 @@ def memoire_dispo():
     process.close()
     return dispo.rstrip()
 
+
+def adresse_mac():
+    process = os.popen("ifconfig eth0 | grep eth0 | awk '{ print $5 }'")
+    mac = process.read()
+    process.close()
+    return mac.rstrip()
+
 def memoire_total():
     process = os.popen("cat /proc/meminfo | grep 'MemTotal' | awk ' {print $2,$3} '")
     total = process.read()
@@ -69,13 +76,14 @@ def test_ping():
 
 machine = {
     "Nom_Machine": nom_machine(),
+    "Adresse_Mac": adresse_mac(),
     "Memoire_Installer": memoire_total(),
     "Memoire_Dispo": memoire_dispo(),
     "Nom_Processeur": nom_processeur(),
     "Nom_Graphique": nom_graphique(),
     "Temps_Actif": temps_actif(),
     "Capaciter_Disque": disk_max(),
-    "Capaciter_Dispo": disk_dispo(),
+    "Capaciter_Dispo": disk_dispo()
 }
 
-r = requests.post("http://0.0.0.0:8000/", json={'json_payload': machine})
+r = requests.post("http://192.168.40.35:8000/", json={adresse_mac(): machine})
