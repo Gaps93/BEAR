@@ -1,21 +1,15 @@
 #!/usr/bin/python3
 
 import socket, os, json
-import urllib
-from urllib.parse import urlparse
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
+from requests.auth import AuthBase
 from io import BytesIO
 
 hostName = ""
 hostPort = 8000
 
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
-	
-	def do_GET(self):
-		self.send_response(200)
-		self.end_headers()
-		self.wfile.write("Hello, world!")
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler, AuthBase):
 	
 	def do_POST(self):
 		content_length = int(self.headers['Content-Length'])
