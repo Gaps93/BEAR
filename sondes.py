@@ -20,12 +20,14 @@ def memoire_dispo():
     return dispo.rstrip()
 
 def adresse_mac():
-	process = os.popen("/sbin/ifconfig eth0 | grep eth0 | awk '{ print $10 }'")
+	process = os.popen("/sbin/ifconfig | head -1 | grep HWaddr | awk '{ print $5 }'")
 	mac = process.read()
-	if mac == "\n":
+	mac = mac.rstrip()
+	process.close()
+	if mac == "":
 		process = os.popen("/sbin/ifconfig eth0 | grep encap | awk '{ print $2 }'")
 		mac = process.read()
-	process.close()
+		process.close()
 	return mac.rstrip()
 
 def memoire_total():
