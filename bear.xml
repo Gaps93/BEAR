@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.8.5
+- https://www.phpmyadmin.net
+-
+- Host: localhost:8889
+- Generation Time: Mar 30, 2019 at 10:13 AM
+- Server version: 5.7.25
+- PHP Version: 7.3.1
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="bear" collation="utf8_general_ci" charset="utf8">
+            <pma:table name="machine">
+                CREATE TABLE `machine` (
+                  `Adresse_Mac` varchar(200) NOT NULL,
+                  `RAM` varchar(200) NOT NULL,
+                  `Nom_Machine` varchar(200) NOT NULL,
+                  `Temps_Actif` varchar(200) NOT NULL,
+                  `Processeur` varchar(200) NOT NULL,
+                  `Espace_Disque_Dispo` varchar(200) NOT NULL,
+                  `RAM_Dispo` varchar(200) NOT NULL,
+                  `Espace_Disque` varchar(200) NOT NULL,
+                  `Carte_Graphique` varchar(200) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="personne">
+                CREATE TABLE `personne` (
+                  `login` varchar(8) NOT NULL,
+                  `password` varchar(12) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'bear'
+    -->
+    <database name="bear">
+        <!-- Table machine -->
+        <table name="machine">
+            <column name="Adresse_Mac">78:45:c4:40:9f:16</column>
+            <column name="RAM"></column>
+            <column name="Nom_Machine"></column>
+            <column name="Temps_Actif"></column>
+            <column name="Processeur"></column>
+            <column name="Espace_Disque_Dispo"></column>
+            <column name="RAM_Dispo"></column>
+            <column name="Espace_Disque"></column>
+            <column name="Carte_Graphique"></column>
+        </table>
+        <table name="machine">
+            <column name="Adresse_Mac">78:45:c4:40:a1:8e</column>
+            <column name="RAM">6012832kB</column>
+            <column name="Nom_Machine">q20307</column>
+            <column name="Temps_Actif">1:21</column>
+            <column name="Processeur">Intel(R) Pentium(R) </column>
+            <column name="Espace_Disque_Dispo">6,6G</column>
+            <column name="RAM_Dispo">5178396 kB</column>
+            <column name="Espace_Disque">11G</column>
+            <column name="Carte_Graphique">Graphics Controller</column>
+        </table>
+        <!-- Table personne -->
+        <table name="personne">
+            <column name="login">admin</column>
+            <column name="password">admin</column>
+        </table>
+    </database>
+</pma_xml_export>
