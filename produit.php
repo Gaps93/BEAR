@@ -76,6 +76,7 @@
 
       elseif ($_SESSION["admin"]==1) {
 
+        echo "<p><h3> <a href='index.php'> Revenir à la liste des Machines à Superviser </a></h3></p>";
         try {
             $bdd = new PDO('mysql:host=localhost;dbname=bear','root','root',array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
             $bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
