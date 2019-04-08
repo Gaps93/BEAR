@@ -1,0 +1,157 @@
+
+header {
+  color: white;
+  padding: 20px 10px 20px 35px;
+}
+
+header + section {
+  background-color: #181B53;
+  width : 3000px;
+  margin-left : -1000px;
+}
+
+nav {
+  margin-left: 1000px;
+}
+
+ul li {
+  display : inline;
+}
+
+li a {
+  text-decoration: none;
+  padding: 20px 70px 20px 70px;
+  border-left: solid 1px white;
+  color: white;
+  font-size: 20px;
+  font-style: bold;
+}
+
+li:last-child a {
+  border-right: solid 1px white;
+}
+
+ul {
+  list-style-type : none;
+  padding: 19px 0px 19px 0px;
+}
+
+li a:hover {
+  background-color: #6691F0;
+  color: black;
+  text-decoration: none;
+}
+.actif a {
+  background-color: #6691F0;
+  color: black;
+  text-decoration: none;
+}
+
+
+.col-md-8 {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+body, container {
+  background-color: #E9EBEF;
+}
+
+h1 {
+  padding-top: 60px;
+  margin-left: 600px;
+  color: #000000;
+  font-size: 50px;
+  font-style: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  color: #181B53;
+  font-size: 20px;
+  font-style: bold;
+}
+
+h3 {
+  display: inline;
+  color: #6691F0;
+  font-size: 20px;
+  font-style: bold;
+}
+
+h4 {
+  padding-left: 30px;
+  margin-right: 20px;
+  color: #181B53;
+  font-size: 18px;
+  font-style: bold;
+  text-decoration: underline;
+  padding-top: 30px;
+  display: inline;
+}
+
+h5{
+  color: #6691F0;
+  font-style: italic;
+  margin-top: -10px;
+  padding-right: 20px;
+  font-size: 12px;
+}
+
+h6{
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+h7{
+  color: #6691F0;
+  display: inline-block;
+  font-weight: bold;
+  margin-left: -800px;
+  font-size: 40px;
+}
+
+h3 p {
+  color: #181B53;
+  text-align: left;
+  font-size: 25px;
+  display: block;
+  margin-left: -100px;
+  }
+}
+
+form {
+    display : inline-block;
+}
+
+form p {
+  margin-left: 50px;
+}
+
+header img {
+  float: left;
+  width: 10em;
+
+}
+
+article a {
+  color: #6691F0;
+  font-weight: bold;
+}
+
+article a:hover {
+  color: #181B53;
+}
+
+p {
+  text-align: center;
+  color: #6691F0;
+  display: block;
+}
+
+article {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 200px;
+}
