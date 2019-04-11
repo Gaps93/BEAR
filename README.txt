@@ -19,8 +19,10 @@ Sur la machine serveur:
 - python3 et les modules suivants: http.server, mysql-connector, json
 - Un serveur apache2 fonctionnel avec le répertoire /var/www/html/ accessible 
 - php, mysql-server et phpmyadmin devront être installés 
+- Une fois le login (root) et le mot de passe (root) configurés il faut importer la bdd via l'onglet "Import" de Phpmyadmin avec le fichier "Site/bear.xml"
 - Scripts collect_json.py et insert_bdd.py
-- Le contenu du répértoire "site" copié dans le répertoire /var/www/html/ de la machine
+- Le contenu du répértoire "Site" copié dans le répertoire /var/www/html/ de la machine
+
 	
 # Script sondes.py 
 	
